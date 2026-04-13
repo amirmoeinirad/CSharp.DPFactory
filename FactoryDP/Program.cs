@@ -2,14 +2,16 @@
 // Amir Moeini Rad
 // September 2025
 
-// Main Concept: Factory Design Pattern
+// Main Concept: The Factory Method Design Pattern
+
 // In this pattern, we create objects without exposing the instantiation logic to the client.
 // The client uses a common interface to create new types of objects.
+// This design pattern can be implemented using both interfaces or abstract classes.
 
 
 namespace FactoryDP
 {
-    // The 'Creator' abstract class
+    // The 'Product' abstract class
     abstract class Product
     {
         public abstract void ShowInfo();
@@ -33,7 +35,7 @@ namespace FactoryDP
     /////////////////////////////////////////////////
 
 
-    // Factory Class/Method
+    // Factory Class and Method
     abstract class Creator
     {
         public abstract Product CreateProduct();
@@ -85,12 +87,12 @@ namespace FactoryDP
 
             Console.WriteLine("In Client...\n");
 
-            Creator creatorA = new CreatorA();
-            Product productA = creatorA.CreateProduct();
+            Creator creator = new CreatorA();
+            Product productA = creator.CreateProduct();
             productA.ShowInfo();
 
-            Creator creatorB = new CreatorB();
-            Product productB = creatorB.CreateProduct();
+            creator = new CreatorB();
+            Product productB = creator.CreateProduct();
             productB.ShowInfo();
 
 
