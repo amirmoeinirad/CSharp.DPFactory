@@ -11,21 +11,21 @@
 
 namespace FactoryDP
 {
-    // The 'Product' abstract class
+    // The 'Product' class
     abstract class Product
     {
         public abstract void ShowInfo();
     }
 
     
-    // The 'ConcreteProduct' class
+    // The 'ConcreteProduct' class A
     class ConcreteProductA : Product
     {
         public override void ShowInfo() => Console.WriteLine("I am Product A.\n");
     }
 
 
-    // The 'ConcreteProduct' class
+    // The 'ConcreteProduct' class B
     class ConcreteProductB : Product
     {
         public override void ShowInfo() => Console.WriteLine("I am Product B.\n");
@@ -35,7 +35,7 @@ namespace FactoryDP
     /////////////////////////////////////////////////
 
 
-    // Factory Class and Method
+    // Factory Class
     abstract class Creator
     {
         public abstract Product CreateProduct();
@@ -48,7 +48,6 @@ namespace FactoryDP
         public override Product CreateProduct()
         {
             Console.WriteLine("CreatorA is creating ProductA...");
-
             return new ConcreteProductA();
         }
     }
@@ -60,7 +59,6 @@ namespace FactoryDP
         public override Product CreateProduct()
         {
             Console.WriteLine("CreatorB is creating ProductB...");
-
             return new ConcreteProductB();
         }
     }
@@ -80,9 +78,8 @@ namespace FactoryDP
 
 
             // The Factory Method lets subclasses decide which object to create.
-            // In fact, the client doesn't directly instantiate or create products.
-            // CreatorA produces ProductA, CreatorB produces ProductB.
-            // Client code (Main) doesn’t care about the concrete class — just calls the factory.
+            // In fact, the client doesn't directly instantiate or create products.            
+            // Client code doesn’t care about the concrete class — it just calls the factory.
             // This promotes loose coupling and adheres to the Open/Closed Principle (SOLID).
 
             Console.WriteLine("In Client...\n");
