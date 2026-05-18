@@ -2,47 +2,39 @@
 // Amir Moeini Rad
 // September 2025
 
-// Main Concept: The Factory Method Design Pattern
+// The Factory Method Design Pattern
 
 // In this pattern, we create objects without exposing the instantiation logic to the client.
 // The client uses a common interface to create new types of objects.
-// This design pattern can be implemented using both interfaces or abstract classes.
-
 
 namespace FactoryDP
-{
-    // The 'Product' class
+{    
+    // Product
     abstract class Product
     {
         public abstract void ShowInfo();
     }
 
-    
-    // The 'ConcreteProduct' class A
+        
     class ConcreteProductA : Product
     {
         public override void ShowInfo() => Console.WriteLine("I am Product A.\n");
     }
 
-
-    // The 'ConcreteProduct' class B
+    
     class ConcreteProductB : Product
     {
         public override void ShowInfo() => Console.WriteLine("I am Product B.\n");
     }
 
 
-    /////////////////////////////////////////////////
-
-
-    // Factory Class
+    // Factory
     abstract class Creator
     {
         public abstract Product CreateProduct();
     }
 
 
-    // Concrete Creators
     class CreatorA : Creator
     {
         public override Product CreateProduct()
@@ -53,7 +45,6 @@ namespace FactoryDP
     }
 
 
-    // Concrete Creators
     class CreatorB : Creator
     {
         public override Product CreateProduct()
@@ -64,23 +55,13 @@ namespace FactoryDP
     }
 
 
-    /////////////////////////////////////////////////
-
-
-    // The Main Program
     internal class Program
     {
         static void Main(string[] args)
         {
             Console.WriteLine("--------------------------------------------");
             Console.WriteLine("The Factory Method Design Pattern in C#.NET.");
-            Console.WriteLine("--------------------------------------------\n");
-
-
-            // The Factory Method lets subclasses decide which object to create.
-            // In fact, the client doesn't directly instantiate or create products.            
-            // Client code doesn’t care about the concrete class — it just calls the factory.
-            // This promotes loose coupling and adheres to the Open/Closed Principle (SOLID).
+            Console.WriteLine("--------------------------------------------\n");                        
 
             Console.WriteLine("In Client...\n");
 
@@ -91,7 +72,6 @@ namespace FactoryDP
             creator = new CreatorB();
             Product productB = creator.CreateProduct();
             productB.ShowInfo();
-
 
             Console.WriteLine("Done.");
         }
